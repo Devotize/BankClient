@@ -36,8 +36,6 @@ import com.sychev.bankclient.utils.TAG
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -65,8 +63,10 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val networkHasConnection = connectionLiveData.observeAsState(initial = false).value
                 var isDataUpdated by remember { mutableStateOf(false) }
-                Scaffold() {
-                    Column() {
+                Scaffold { paddingValues ->
+                    Column(
+                        modifier = Modifier.padding(paddingValues)
+                    ) {
                         if (!networkHasConnection) {
                             if (viewModel.users.value == null && viewModel.currency.value == null) {
                                 viewModel.refreshData()
@@ -110,7 +110,7 @@ class MainActivity : ComponentActivity() {
                                 CardsScreen(
                                     viewModel = viewModel,
                                     onBackClick = {
-                                        onBackPressed()
+                                        onBackPressedDispatcher.onBackPressed()
                                     }
                                 )
                             }
