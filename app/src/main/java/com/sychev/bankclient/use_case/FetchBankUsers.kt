@@ -10,12 +10,14 @@ import kotlinx.coroutines.flow.flow
 class FetchBankUsers (
     private val bankUsersRepository: BankUsersRepository
 ) {
-    fun execute(): Flow<DataState<Users>> = flow<DataState<Users>> {
+    fun execute(): Flow<DataState<Users>> = flow {
         try {
             emit(DataState.loading())
             val result = bankUsersRepository.getUsers()
+            //just for real looking request
+            delay(1500)
             emit(DataState.success(result))
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             emit(DataState.error("error: ${e.localizedMessage}"))
         }
     }
