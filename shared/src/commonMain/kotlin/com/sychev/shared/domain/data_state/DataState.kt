@@ -1,4 +1,4 @@
-package com.sychev.bankclient.domain.data_state
+package com.sychev.shared.domain.data_state
 
 data class DataState<T>(
     val data: T? = null,

@@ -1,4 +1,4 @@
-package com.sychev.bankclient.domain.model.currency
+package com.sychev.shared.domain.model.currency
 
 
 data class Valute(

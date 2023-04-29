@@ -1,8 +1,8 @@
 package com.sychev.bankclient.use_case
 
-import com.sychev.bankclient.domain.data_state.DataState
-import com.sychev.bankclient.domain.model.user_data.Users
 import com.sychev.bankclient.repository.BankUsersRepository
+import com.sychev.shared.domain.data_state.DataState
+import com.sychev.shared.domain.model.user_data.Users
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

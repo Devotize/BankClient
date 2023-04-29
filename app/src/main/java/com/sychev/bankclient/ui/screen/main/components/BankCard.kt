@@ -3,7 +3,17 @@ package com.sychev.bankclient.ui.screen.main.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -14,13 +24,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.sychev.bankclient.R
-import com.sychev.bankclient.domain.model.currency.Currency
-import com.sychev.bankclient.domain.model.currency.CurrencyItem
-import com.sychev.bankclient.domain.model.user_data.User
 import com.sychev.bankclient.utils.CardType
 import com.sychev.bankclient.utils.CurrencyChange
 import com.sychev.bankclient.utils.CurrencySign
 import com.sychev.bankclient.utils.toMoneyString
+import com.sychev.shared.domain.model.currency.Currency
+import com.sychev.shared.domain.model.currency.CurrencyItem
+import com.sychev.shared.domain.model.user_data.User
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -110,7 +120,10 @@ fun BankCard(
                         modifier = Modifier
                             .height(24.dp)
                             .width(126.dp)
-                            .background(color = MaterialTheme.colors.background, shape = MaterialTheme.shapes.medium),
+                            .background(
+                                color = MaterialTheme.colors.background,
+                                shape = MaterialTheme.shapes.medium
+                            ),
                     )
                 }
                 currency?.let { currency ->
@@ -179,7 +192,10 @@ fun LoadingBankCard(
                     modifier = Modifier
                         .height(24.dp)
                         .width(217.dp)
-                        .background(color = MaterialTheme.colors.background, shape = MaterialTheme.shapes.medium),
+                        .background(
+                            color = MaterialTheme.colors.background,
+                            shape = MaterialTheme.shapes.medium
+                        ),
                 )
 
             }
@@ -195,7 +211,10 @@ fun LoadingBankCard(
                 ) {
                     Box(
                         modifier = Modifier
-                            .background(color = MaterialTheme.colors.background, shape = CircleShape)
+                            .background(
+                                color = MaterialTheme.colors.background,
+                                shape = CircleShape
+                            )
                             .size(30.dp),
                     )
                     Spacer(modifier = Modifier.width(14.dp))
@@ -203,13 +222,19 @@ fun LoadingBankCard(
                         modifier = Modifier
                             .height(25.dp)
                             .width(99.dp)
-                            .background(color = MaterialTheme.colors.background, shape = MaterialTheme.shapes.medium),
+                            .background(
+                                color = MaterialTheme.colors.background,
+                                shape = MaterialTheme.shapes.medium
+                            ),
                     )
                 }
                 Box(
                     modifier = Modifier
                         .size(46.dp)
-                        .background(color = MaterialTheme.colors.background, shape = MaterialTheme.shapes.medium),
+                        .background(
+                            color = MaterialTheme.colors.background,
+                            shape = MaterialTheme.shapes.medium
+                        ),
                 )
             }
             Spacer(modifier = Modifier.height(21.dp))
@@ -224,7 +249,10 @@ fun LoadingBankCard(
                     modifier = Modifier
                         .height(34.dp)
                         .width(126.dp)
-                        .background(color = MaterialTheme.colors.background, shape = MaterialTheme.shapes.medium),
+                        .background(
+                            color = MaterialTheme.colors.background,
+                            shape = MaterialTheme.shapes.medium
+                        ),
                 )
                 Column(
                     horizontalAlignment = Alignment.End,
@@ -233,7 +261,10 @@ fun LoadingBankCard(
                         modifier = Modifier
                             .height(51.dp)
                             .width(82.dp)
-                            .background(color = MaterialTheme.colors.background, shape = MaterialTheme.shapes.medium),
+                            .background(
+                                color = MaterialTheme.colors.background,
+                                shape = MaterialTheme.shapes.medium
+                            ),
                     )
                 }
             }

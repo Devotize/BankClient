@@ -1,7 +1,10 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    kotlin("plugin.serialization") version "1.8.10"
 }
+
+val serialization_version by rootProject.properties
 
 kotlin {
     android {
@@ -23,7 +26,11 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version")
+            }
+        }
         val androidMain by getting
         val iosX64Main by getting
         val iosArm64Main by getting

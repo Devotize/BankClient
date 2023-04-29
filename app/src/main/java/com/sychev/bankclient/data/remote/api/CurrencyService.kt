@@ -1,6 +1,6 @@
 package com.sychev.bankclient.data.remote.api
 
-import com.sychev.bankclient.data.remote.model.currency.CurrencyDto
+import com.sychev.shared.remote.model.currency.CurrencyDto
 import retrofit2.http.GET
 
 interface CurrencyService {

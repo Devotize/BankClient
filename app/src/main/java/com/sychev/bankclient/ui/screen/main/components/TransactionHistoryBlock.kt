@@ -28,13 +28,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.sychev.bankclient.R
-import com.sychev.bankclient.domain.model.currency.Currency
-import com.sychev.bankclient.domain.model.currency.CurrencyItem
-import com.sychev.bankclient.domain.model.user_data.TransactionHistory
 import com.sychev.bankclient.ui.theme.GreyStrokeColor
 import com.sychev.bankclient.utils.CurrencyChange
 import com.sychev.bankclient.utils.CurrencySign
 import com.sychev.bankclient.utils.toMoneyString
+import com.sychev.shared.domain.model.currency.Currency
+import com.sychev.shared.domain.model.currency.CurrencyItem
+import com.sychev.shared.domain.model.user_data.TransactionHistory
 import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.absoluteValue

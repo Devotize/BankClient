@@ -3,8 +3,8 @@ package com.sychev.bankclient.di
 import com.google.gson.GsonBuilder
 import com.sychev.bankclient.data.remote.api.BankUsersService
 import com.sychev.bankclient.data.remote.api.CurrencyService
-import com.sychev.bankclient.data.remote.mapper.CurrencyDtoMapper
-import com.sychev.bankclient.data.remote.mapper.UsersDtoMapper
+import com.sychev.shared.remote.mapper.CurrencyDtoMapper
+import com.sychev.shared.remote.mapper.UsersDtoMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

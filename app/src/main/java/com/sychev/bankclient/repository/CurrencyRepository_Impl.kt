@@ -1,8 +1,8 @@
 package com.sychev.bankclient.repository
 
 import com.sychev.bankclient.data.remote.api.CurrencyService
-import com.sychev.bankclient.data.remote.mapper.CurrencyDtoMapper
-import com.sychev.bankclient.domain.model.currency.Currency
+import com.sychev.shared.domain.model.currency.Currency
+import com.sychev.shared.remote.mapper.CurrencyDtoMapper
 
 class CurrencyRepository_Impl(
     private val currencyService: CurrencyService,

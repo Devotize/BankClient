@@ -1,8 +1,7 @@
 package com.sychev.bankclient.data.local.mapper
 
-import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.sychev.bankclient.domain.model.user_data.TransactionHistory
+import com.sychev.shared.domain.model.user_data.TransactionHistory
 
 object Converters {
 

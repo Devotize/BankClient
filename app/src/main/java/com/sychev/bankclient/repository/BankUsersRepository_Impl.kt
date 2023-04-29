@@ -4,9 +4,9 @@ import android.util.Log
 import com.sychev.bankclient.data.local.dao.UserDao
 import com.sychev.bankclient.data.local.mapper.UserEntityMapper
 import com.sychev.bankclient.data.remote.api.BankUsersService
-import com.sychev.bankclient.data.remote.mapper.UsersDtoMapper
-import com.sychev.bankclient.domain.model.user_data.Users
 import com.sychev.bankclient.utils.TAG
+import com.sychev.shared.domain.model.user_data.Users
+import com.sychev.shared.remote.mapper.UsersDtoMapper
 
 class BankUsersRepository_Impl (
     private val bankUsersService: BankUsersService,
