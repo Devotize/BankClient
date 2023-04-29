@@ -2,10 +2,10 @@ package com.sychev.bankclient.data.remote.mapper
 
 import com.sychev.bankclient.data.remote.model.currency.CurrencyDto
 import com.sychev.bankclient.data.remote.model.currency.CurrencyItemDto
-import com.sychev.bankclient.domain.mapper.DomainMapper
 import com.sychev.bankclient.domain.model.currency.Currency
 import com.sychev.bankclient.domain.model.currency.CurrencyItem
 import com.sychev.bankclient.domain.model.currency.Valute
+import com.sychev.shared.domain.mapper.DomainMapper
 
 class CurrencyDtoMapper: DomainMapper<Currency, CurrencyDto> {
     override fun toDomainModel(model: CurrencyDto): Currency {

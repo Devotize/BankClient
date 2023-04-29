@@ -1,8 +1,8 @@
 package com.sychev.bankclient.data.local.mapper
 
 import com.sychev.bankclient.data.local.entity.UserEntity
-import com.sychev.bankclient.domain.mapper.DomainMapper
 import com.sychev.bankclient.domain.model.user_data.User
+import com.sychev.shared.domain.mapper.DomainMapper
 
 class UserEntityMapper: DomainMapper<User, UserEntity> {
     override fun toDomainModel(model: UserEntity): User {

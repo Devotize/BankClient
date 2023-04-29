@@ -1,10 +1,10 @@
 package com.sychev.bankclient.data.remote.mapper
 
 import com.sychev.bankclient.data.remote.model.user_data.UsersDto
-import com.sychev.bankclient.domain.mapper.DomainMapper
 import com.sychev.bankclient.domain.model.user_data.TransactionHistory
 import com.sychev.bankclient.domain.model.user_data.User
 import com.sychev.bankclient.domain.model.user_data.Users
+import com.sychev.shared.domain.mapper.DomainMapper
 
 class UsersDtoMapper: DomainMapper<Users, UsersDto> {
     override fun toDomainModel(model: UsersDto): Users {
