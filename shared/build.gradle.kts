@@ -5,6 +5,7 @@ plugins {
 }
 
 val serialization_version by rootProject.properties
+val ktor_version by rootProject.properties
 
 kotlin {
     android {
@@ -29,6 +30,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
             }
         }
         val androidMain by getting
