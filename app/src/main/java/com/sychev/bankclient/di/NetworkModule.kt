@@ -2,7 +2,6 @@ package com.sychev.bankclient.di
 
 import com.google.gson.GsonBuilder
 import com.sychev.bankclient.data.remote.api.BankUsersService
-import com.sychev.bankclient.data.remote.api.CurrencyService
 import com.sychev.shared.remote.mapper.CurrencyDtoMapper
 import com.sychev.shared.remote.mapper.UsersDtoMapper
 import dagger.Module
@@ -38,19 +37,6 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
             .create(BankUsersService::class.java)
-    }
-
-    @Singleton
-    @Provides
-    fun provideCurrencyApi(
-        client: OkHttpClient
-    ): CurrencyService {
-        return Retrofit.Builder()
-            .baseUrl("https://www.cbr-xml-daily.ru/")
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build()
-            .create(CurrencyService::class.java)
     }
 
     @Singleton
