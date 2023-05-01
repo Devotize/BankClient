@@ -1,8 +1,10 @@
-package com.sychev.shared.remote.model.user_data
+package com.sychev.shared.data.remote.model.user_data
 
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TransactionHistoryDto(
     @SerialName("amount")
     val amount: String,

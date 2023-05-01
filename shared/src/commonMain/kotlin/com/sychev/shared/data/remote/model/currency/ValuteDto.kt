@@ -1,4 +1,4 @@
-package com.sychev.shared.remote.model.currency
+package com.sychev.shared.data.remote.model.currency
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -1,6 +1,6 @@
 package com.sychev.bankclient.data.local.mapper
 
-import com.sychev.bankclient.data.local.entity.UserEntity
+import com.sychev.bankclient.data.local.model.UserEntity
 import com.sychev.shared.domain.mapper.DomainMapper
 import com.sychev.shared.domain.model.user_data.User
 

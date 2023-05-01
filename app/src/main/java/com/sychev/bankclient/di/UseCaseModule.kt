@@ -1,10 +1,10 @@
 package com.sychev.bankclient.di
 
-import com.sychev.bankclient.repository.BankUsersRepository
 import com.sychev.bankclient.use_case.FetchBankUsers
 import com.sychev.bankclient.use_case.GetCurrency
 import com.sychev.bankclient.use_case.GetUsersFromCache
 import com.sychev.bankclient.use_case.InsertUsersToCache
+import com.sychev.shared.repository.BankUsersRepository
 import com.sychev.shared.repository.CurrencyRepository
 import dagger.Module
 import dagger.Provides

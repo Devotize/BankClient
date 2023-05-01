@@ -1,10 +1,10 @@
-package com.sychev.shared.remote.mapper
+package com.sychev.shared.data.remote.mapper
 
+import com.sychev.shared.data.remote.model.user_data.UsersDto
 import com.sychev.shared.domain.mapper.DomainMapper
 import com.sychev.shared.domain.model.user_data.TransactionHistory
 import com.sychev.shared.domain.model.user_data.User
 import com.sychev.shared.domain.model.user_data.Users
-import com.sychev.shared.remote.model.user_data.UsersDto
 
 class UsersDtoMapper: DomainMapper<Users, UsersDto> {
     override fun toDomainModel(model: UsersDto): Users {

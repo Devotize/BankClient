@@ -1,12 +1,9 @@
 package com.sychev.bankclient.di
 
-import com.sychev.bankclient.data.local.dao.UserDao
-import com.sychev.bankclient.data.local.mapper.UserEntityMapper
-import com.sychev.bankclient.data.remote.api.BankUsersService
-import com.sychev.bankclient.repository.BankUsersRepository
-import com.sychev.bankclient.repository.BankUsersRepositoryImpl
-import com.sychev.shared.remote.mapper.CurrencyDtoMapper
-import com.sychev.shared.remote.mapper.UsersDtoMapper
+import com.sychev.shared.data.remote.mapper.CurrencyDtoMapper
+import com.sychev.shared.data.remote.mapper.UsersDtoMapper
+import com.sychev.shared.repository.BankUsersRepository
+import com.sychev.shared.repository.BankUsersRepositoryImpl
 import com.sychev.shared.repository.CurrencyRepository
 import com.sychev.shared.repository.CurrencyRepositoryImpl
 import dagger.Module
@@ -21,15 +18,9 @@ object RepoModule {
     @Singleton
     @Provides
     fun provideBankUsersRepo(
-        bankUsersService: BankUsersService,
-        userDao: UserDao,
-        userEntityMapper: UserEntityMapper,
         usersDtoMapper: UsersDtoMapper,
     ): BankUsersRepository {
         return BankUsersRepositoryImpl(
-            bankUsersService = bankUsersService,
-            userDao = userDao,
-            userEntityMapper = userEntityMapper,
             usersDtoMapper = usersDtoMapper,
         )
     }

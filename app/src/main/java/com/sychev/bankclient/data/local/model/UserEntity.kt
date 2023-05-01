@@ -1,4 +1,4 @@
-package com.sychev.bankclient.data.local.entity
+package com.sychev.bankclient.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

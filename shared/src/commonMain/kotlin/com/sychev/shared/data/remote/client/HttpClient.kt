@@ -1,4 +1,4 @@
-package com.sychev.shared.remote.client
+package com.sychev.shared.data.remote.client
 
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation

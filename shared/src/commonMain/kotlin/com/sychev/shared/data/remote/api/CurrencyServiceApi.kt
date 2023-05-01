@@ -1,6 +1,7 @@
-package com.sychev.shared.remote.client
+package com.sychev.shared.data.remote.api
 
-import com.sychev.shared.remote.model.currency.CurrencyDto
+import com.sychev.shared.data.remote.client.client
+import com.sychev.shared.data.remote.model.currency.CurrencyDto
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import kotlinx.serialization.decodeFromString
@@ -14,7 +15,7 @@ private val json by lazy {
     }
 }
 
-object CurrencyRemoteApi {
+object CurrencyServiceApi {
 
     private val httpClient = client
 

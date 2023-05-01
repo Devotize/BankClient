@@ -1,11 +1,11 @@
-package com.sychev.shared.remote.mapper
+package com.sychev.shared.data.remote.mapper
 
+import com.sychev.shared.data.remote.model.currency.CurrencyDto
+import com.sychev.shared.data.remote.model.currency.CurrencyItemDto
 import com.sychev.shared.domain.mapper.DomainMapper
 import com.sychev.shared.domain.model.currency.Currency
 import com.sychev.shared.domain.model.currency.CurrencyItem
 import com.sychev.shared.domain.model.currency.Valute
-import com.sychev.shared.remote.model.currency.CurrencyDto
-import com.sychev.shared.remote.model.currency.CurrencyItemDto
 
 class CurrencyDtoMapper: DomainMapper<Currency, CurrencyDto> {
     override fun toDomainModel(model: CurrencyDto): Currency {
