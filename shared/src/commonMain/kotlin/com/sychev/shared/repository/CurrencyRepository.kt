@@ -1,4 +1,4 @@
-package com.sychev.bankclient.repository
+package com.sychev.shared.repository
 
 import com.sychev.shared.domain.model.currency.Currency
 

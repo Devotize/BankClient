@@ -1,8 +1,8 @@
 package com.sychev.bankclient.use_case
 
-import com.sychev.bankclient.repository.CurrencyRepository
 import com.sychev.shared.domain.data_state.DataState
 import com.sychev.shared.domain.model.currency.Currency
+import com.sychev.shared.repository.CurrencyRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

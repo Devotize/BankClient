@@ -8,12 +8,12 @@ import com.sychev.bankclient.utils.TAG
 import com.sychev.shared.domain.model.user_data.Users
 import com.sychev.shared.remote.mapper.UsersDtoMapper
 
-class BankUsersRepository_Impl (
+class BankUsersRepositoryImpl(
     private val bankUsersService: BankUsersService,
     private val userDao: UserDao,
     private val userEntityMapper: UserEntityMapper,
     private val usersDtoMapper: UsersDtoMapper,
-): BankUsersRepository{
+) : BankUsersRepository {
 
     override suspend fun getUsers(): Users {
         Log.d(TAG, "getUsers: called")

@@ -2,7 +2,9 @@ package com.sychev.shared.remote.model.currency
 
 
 import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class CurrencyItemDto(
     @SerialName("CharCode")
     val charCode: String,
