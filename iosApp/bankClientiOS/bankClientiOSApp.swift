@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct bankClientiOSApp: App {
+    
+    let bankUserRepository = repositoriesProvider.bankUserRepository
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainScreen()
         }
     }
 }

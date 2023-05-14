@@ -6,6 +6,7 @@ plugins {
 
 val serialization_version by rootProject.properties
 val ktor_version by rootProject.properties
+val koin_version by rootProject.properties
 
 kotlin {
     android {
@@ -32,11 +33,14 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktor_version")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+
+                implementation("io.insert-koin:koin-core:${koin_version}")
             }
         }
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-okhttp:$ktor_version")
+                implementation("io.insert-koin:koin-android:$koin_version")
             }
         }
         val iosX64Main by getting
