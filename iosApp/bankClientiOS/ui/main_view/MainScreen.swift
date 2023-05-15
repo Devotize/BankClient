@@ -17,7 +17,7 @@ struct MainScreen: View {
         
         @State var usersData  = viewModel.usersData
                 
-        VStack {
+        VStack(alignment: .leading) {
             
             if let data = usersData {
                 if let user = data.users.first {
@@ -25,7 +25,7 @@ struct MainScreen: View {
                 }
                 
             }
-        }
+        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
     }
 }
 
@@ -37,9 +37,20 @@ struct UserInfoCard : View {
     }
     
     var body: some View {
-        VStack {
-            
-        }
+        ZStack(alignment: .topLeading) {
+            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                .fill(Color.primary)
+                .shadow(radius: 10)
+            VStack {
+                HStack {
+                    Image(CardTypeImage.getImageByName(name: user.type))
+                    
+                    Text("\(user.cardNumber)")
+                        .font(.title2)
+                        .foregroundColor(Color.onPrimary)
+                }
+            }
+        }.fixedSize()
     }
     
 }

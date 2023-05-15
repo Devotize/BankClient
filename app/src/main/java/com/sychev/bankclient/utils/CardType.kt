@@ -1,7 +1,5 @@
 package com.sychev.bankclient.utils
 
-import android.graphics.Bitmap
-import androidx.annotation.DrawableRes
 import com.sychev.bankclient.R
 
 object CardType {

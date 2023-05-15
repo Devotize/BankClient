@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F00A03D22A11212F00091399 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00A03D12A11212F00091399 /* Colors.xcassets */; };
+		F00A03D52A11221C00091399 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00A03D42A11221C00091399 /* Color.swift */; };
+		F00A03D82A112A3300091399 /* CardTypeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00A03D72A112A3300091399 /* CardTypeImage.swift */; };
 		F096145D2A0AAD330038214A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F096145C2A0AAD330038214A /* MainViewModel.swift */; };
 		F09614612A0AB1000038214A /* RepositoriesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09614602A0AB1000038214A /* RepositoriesProvider.swift */; };
 		F0AD6EA729FD3BDD0022DFF8 /* bankClientiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AD6EA629FD3BDD0022DFF8 /* bankClientiOSApp.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F00A03D12A11212F00091399 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		F00A03D42A11221C00091399 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F00A03D72A112A3300091399 /* CardTypeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeImage.swift; sourceTree = "<group>"; };
 		F096145C2A0AAD330038214A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F09614602A0AB1000038214A /* RepositoriesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesProvider.swift; sourceTree = "<group>"; };
 		F0AD6EA329FD3BDD0022DFF8 /* bankClientiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bankClientiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,6 +42,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F00A03D32A1121FD00091399 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F00A03D42A11221C00091399 /* Color.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		F00A03D62A1129FF00091399 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				F00A03D72A112A3300091399 /* CardTypeImage.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		F09614592A0AABF90038214A /* ui */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,10 +118,13 @@
 		F0AD6EA529FD3BDD0022DFF8 /* bankClientiOS */ = {
 			isa = PBXGroup;
 			children = (
+				F00A03D62A1129FF00091399 /* utils */,
+				F00A03D32A1121FD00091399 /* extensions */,
 				F096145F2A0AAFD70038214A /* di */,
 				F09614592A0AABF90038214A /* ui */,
 				F0AD6EA629FD3BDD0022DFF8 /* bankClientiOSApp.swift */,
 				F0AD6EAA29FD3BDF0022DFF8 /* Assets.xcassets */,
+				F00A03D12A11212F00091399 /* Colors.xcassets */,
 				F0AD6EAC29FD3BDF0022DFF8 /* Preview Content */,
 			);
 			path = bankClientiOS;
@@ -172,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00A03D22A11212F00091399 /* Colors.xcassets in Resources */,
 				F0AD6EAE29FD3BDF0022DFF8 /* Preview Assets.xcassets in Resources */,
 				F0AD6EAB29FD3BDF0022DFF8 /* Assets.xcassets in Resources */,
 			);
@@ -207,6 +233,8 @@
 				F09614612A0AB1000038214A /* RepositoriesProvider.swift in Sources */,
 				F0AD6EA929FD3BDD0022DFF8 /* MainScreen.swift in Sources */,
 				F0AD6EA729FD3BDD0022DFF8 /* bankClientiOSApp.swift in Sources */,
+				F00A03D82A112A3300091399 /* CardTypeImage.swift in Sources */,
+				F00A03D52A11221C00091399 /* Color.swift in Sources */,
 				F096145D2A0AAD330038214A /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
