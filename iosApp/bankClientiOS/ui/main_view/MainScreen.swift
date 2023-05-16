@@ -44,13 +44,38 @@ struct UserInfoCard : View {
             VStack {
                 HStack {
                     Image(CardTypeImage.getImageByName(name: user.type))
-                    
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 12))
                     Text("\(user.cardNumber)")
                         .font(.title2)
                         .foregroundColor(Color.onPrimary)
+                }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
+                Spacer(minLength: 16)
+                HStack {
+                    HStack {
+                        Image("user_icon").padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8))
+                        Text(user.cardholderName)
+                            .font(.subheadline)
+                            .foregroundColor(Color.onSurface)
+                    }
+                    Spacer()
+                    VStack {
+                        Text("VALID THRU")
+                            .font(.system(size: 6))
+                            .foregroundColor(Color.onSurface)
+                        Text(user.valid)
+                            .font(.subheadline)
+                            .foregroundColor(Color.onSurface)
+                    }
                 }
-            }
-        }.fixedSize()
+                Spacer(minLength: 16)
+                HStack {
+                    
+                }
+            }.padding(EdgeInsets(top: 18, leading: 12, bottom: 18, trailing: 12))
+        }
+        .padding()
+        .fixedSize(horizontal: false, vertical: true)
+        
     }
     
 }
