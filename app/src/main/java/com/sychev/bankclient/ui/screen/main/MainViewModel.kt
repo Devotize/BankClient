@@ -84,7 +84,7 @@ class MainViewModel @Inject constructor(
             loadingUsers.value = dataState.loading
             dataState.data?.let {
                 users.value = it
-                currentUser.value = it.users[0]
+                currentUser.value = it.users.getOrNull(0)
                 it.users.forEach { user ->
                     if (user.cardNumber == previouslySelectedUserCardNumber.value) {
                         currentUser.value = user

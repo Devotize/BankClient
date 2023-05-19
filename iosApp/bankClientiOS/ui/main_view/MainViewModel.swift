@@ -11,8 +11,15 @@ import shared
 class MainViewModel: ObservableObject {
     
     private let userRepository = repositoriesProvider.bankUserRepository
+    private let currencyRepository = repositoriesProvider.currencyRepository
     
     @Published var usersData: Users? = nil
+    
+    @Published var selectedCurrency: CurrencyItem? = nil
+    
+    @Published var currency: Currency? = nil
+    
+    @Published var selectedUser: User? = nil
         
     func fetchUsers(callback: @escaping (Users?) -> Void) {
         userRepository.fetchUsers { users, error in
@@ -20,10 +27,23 @@ class MainViewModel: ObservableObject {
         }
     }
     
+    func fetchCurrency(callback: @escaping (Currency?) -> Void) {
+        currencyRepository.getCurrency { currency, error in
+            callback(currency)
+        }
+    }
+    
     init() {
         fetchUsers { users in
             DispatchQueue.main.async {
                 self.usersData = users
+                self.selectedUser = users?.users.first
+            }
+        }
+        fetchCurrency { currency in
+            DispatchQueue.main.async {
+                self.currency = currency
+                self.selectedCurrency = currency?.valute.gBP
             }
         }
     }

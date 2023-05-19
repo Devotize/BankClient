@@ -1,6 +1,6 @@
-package com.sychev.bankclient.utils
+package com.sychev.shared.utils
 
-fun Double.toMoneyString():String {
+fun Double.toMoneyString(): String {
     val partBeforeFloatingPoint = this.toString().substringBefore(".")
     var partAfterFloatingPoint = this.toString().substringAfter(".")
     val sb = StringBuilder(partBeforeFloatingPoint.reversed())
@@ -16,4 +16,16 @@ fun Double.toMoneyString():String {
         }
     }
     return sb.toString().reversed().plus(".${partAfterFloatingPoint}")
+}
+
+fun Double.roundTo(decimals: Int): Double {
+    val str = this.toString()
+    val partBeforeFloatingPoint = str.substringBefore(".")
+    val partAfterFloatingPoint = str.substringAfter(".")
+    var result = "$partBeforeFloatingPoint."
+    for (i in 0 until decimals) {
+        val nextDigit = partAfterFloatingPoint.getOrNull(i) ?: "0"
+        result += nextDigit
+    }
+    return result.toDouble()
 }

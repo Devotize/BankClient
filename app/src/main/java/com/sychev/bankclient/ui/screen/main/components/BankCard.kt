@@ -25,14 +25,12 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.sychev.bankclient.R
 import com.sychev.bankclient.utils.CardType
-import com.sychev.bankclient.utils.CurrencyChange
 import com.sychev.bankclient.utils.CurrencySign
-import com.sychev.bankclient.utils.toMoneyString
 import com.sychev.shared.domain.model.currency.Currency
 import com.sychev.shared.domain.model.currency.CurrencyItem
 import com.sychev.shared.domain.model.user_data.User
-import java.math.BigDecimal
-import java.math.RoundingMode
+import com.sychev.shared.utils.CurrencyChange
+import com.sychev.shared.utils.toMoneyString
 
 @Composable
 fun BankCard(
@@ -69,12 +67,13 @@ fun BankCard(
                     text = user.cardNumber,
                     style = MaterialTheme.typography.h2,
                 )
-                
+
             }
             Spacer(modifier = Modifier.height(24.dp))
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 22.dp, end = 22.dp),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 22.dp, end = 22.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -130,15 +129,12 @@ fun BankCard(
                     selectedCurrency?.let { currencyItem ->
                         Text(
                             text = CurrencySign.getCurrencySign(currencyItem.charCode) +
-                                    BigDecimal(
-                                        CurrencyChange.changeCurrency(
-                                            user.balance,
-                                            currency.valute.uSD.value,
-                                            currencyItem.value)
-                                    ).setScale(2, RoundingMode.HALF_EVEN)
-                                        .toDouble()
-                                        .toMoneyString()
-                                        .replace(".", ",")
+                                    CurrencyChange.changeCurrencyAndRound(
+                                        user.balance,
+                                        currency.valute.uSD.value,
+                                        currencyItem.value
+                                    )
+
                         )
                     }
                 }
@@ -200,9 +196,10 @@ fun LoadingBankCard(
 
             }
             Spacer(modifier = Modifier.height(24.dp))
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 22.dp, end = 22.dp),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 22.dp, end = 22.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {

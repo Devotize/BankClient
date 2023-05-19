@@ -29,14 +29,12 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.sychev.bankclient.R
 import com.sychev.bankclient.ui.theme.GreyStrokeColor
-import com.sychev.bankclient.utils.CurrencyChange
 import com.sychev.bankclient.utils.CurrencySign
-import com.sychev.bankclient.utils.toMoneyString
 import com.sychev.shared.domain.model.currency.Currency
 import com.sychev.shared.domain.model.currency.CurrencyItem
 import com.sychev.shared.domain.model.user_data.TransactionHistory
-import java.math.BigDecimal
-import java.math.RoundingMode
+import com.sychev.shared.utils.CurrencyChange
+import com.sychev.shared.utils.toMoneyString
 import kotlin.math.absoluteValue
 
 @Composable
@@ -146,15 +144,11 @@ private fun TransactionItem(
                             withStyle(SpanStyle(color = MaterialTheme.colors.onPrimary)) {
                                 append(
                                     " ${
-                                        BigDecimal(
-                                            CurrencyChange.changeCurrency(
-                                                transaction.amount.toDouble().absoluteValue,
-                                                currency.valute.uSD.value,
-                                                selectedCurrency.value
-                                            )
-                                        ).setScale(2, RoundingMode.HALF_EVEN)
-                                            .toDouble()
-                                            .toMoneyString()
+                                        CurrencyChange.changeCurrencyAndRound(
+                                            transaction.amount.toDouble().absoluteValue,
+                                            currency.valute.uSD.value,
+                                            selectedCurrency.value
+                                        )
                                     }"
                                 )
                             }

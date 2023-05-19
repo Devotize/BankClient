@@ -16,24 +16,27 @@ struct MainScreen: View {
     var body: some View {
         
         @State var usersData  = viewModel.usersData
+        @State var selectedCurrency = viewModel.selectedCurrency
+        @State var selectedUser = viewModel.selectedUser
                 
         VStack(alignment: .leading) {
             
-            if let data = usersData {
-                if let user = data.users.first {
-                    UserInfoCard(user: user)
-                }
-                
+            if (usersData != nil && selectedCurrency != nil && selectedUser != nil) {
+                UserInfoCard(users: usersData!, selectedCurrency: selectedCurrency!, user: selectedUser!)
             }
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
     }
 }
 
 struct UserInfoCard : View {
+    let users: Users
+    let selectedCurrency: CurrencyItem
     let user: User
     
-    init(user: User) {
+    init(users: Users, selectedCurrency: CurrencyItem, user: User) {
+        self.users = users
         self.user = user
+        self.selectedCurrency = selectedCurrency
     }
     
     var body: some View {
