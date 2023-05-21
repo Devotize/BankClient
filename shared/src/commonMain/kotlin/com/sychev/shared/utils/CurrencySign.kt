@@ -1,4 +1,4 @@
-package com.sychev.bankclient.utils
+package com.sychev.shared.utils
 
 object CurrencySign {
     fun getCurrencySign(

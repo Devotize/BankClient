@@ -25,11 +25,11 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.sychev.bankclient.R
 import com.sychev.bankclient.utils.CardType
-import com.sychev.bankclient.utils.CurrencySign
 import com.sychev.shared.domain.model.currency.Currency
 import com.sychev.shared.domain.model.currency.CurrencyItem
 import com.sychev.shared.domain.model.user_data.User
 import com.sychev.shared.utils.CurrencyChange
+import com.sychev.shared.utils.CurrencySign
 import com.sychev.shared.utils.toMoneyString
 
 @Composable

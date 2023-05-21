@@ -16,8 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.sychev.bankclient.utils.CurrencySign
 import com.sychev.shared.domain.model.currency.CurrencyItem
+import com.sychev.shared.utils.CurrencySign
 
 @Composable
 fun CurrencyCard(

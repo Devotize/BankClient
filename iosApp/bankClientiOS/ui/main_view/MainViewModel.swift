@@ -48,4 +48,8 @@ class MainViewModel: ObservableObject {
         }
     }
     
+    func changeSelectedCurrency(currency: CurrencyItem) {
+        selectedCurrency = currency
+    }
+    
 }

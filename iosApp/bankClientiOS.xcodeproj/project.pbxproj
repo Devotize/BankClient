@@ -16,6 +16,8 @@
 		F0AD6EA929FD3BDD0022DFF8 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AD6EA829FD3BDD0022DFF8 /* MainScreen.swift */; };
 		F0AD6EAB29FD3BDF0022DFF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0AD6EAA29FD3BDF0022DFF8 /* Assets.xcassets */; };
 		F0AD6EAE29FD3BDF0022DFF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0AD6EAD29FD3BDF0022DFF8 /* Preview Assets.xcassets */; };
+		F0FBCEB62A1A3E850037A847 /* CurrencySignCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FBCEB52A1A3E850037A847 /* CurrencySignCard.swift */; };
+		F0FBCEB82A1A552F0037A847 /* UserInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FBCEB72A1A552F0037A847 /* UserInfoCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		F0AD6EA829FD3BDD0022DFF8 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		F0AD6EAA29FD3BDF0022DFF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0AD6EAD29FD3BDF0022DFF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F0FBCEB52A1A3E850037A847 /* CurrencySignCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySignCard.swift; sourceTree = "<group>"; };
+		F0FBCEB72A1A552F0037A847 /* UserInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 		F096145A2A0AAC0A0038214A /* components */ = {
 			isa = PBXGroup;
 			children = (
+				F0FBCEB52A1A3E850037A847 /* CurrencySignCard.swift */,
+				F0FBCEB72A1A552F0037A847 /* UserInfoCard.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -231,6 +237,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F09614612A0AB1000038214A /* RepositoriesProvider.swift in Sources */,
+				F0FBCEB62A1A3E850037A847 /* CurrencySignCard.swift in Sources */,
+				F0FBCEB82A1A552F0037A847 /* UserInfoCard.swift in Sources */,
 				F0AD6EA929FD3BDD0022DFF8 /* MainScreen.swift in Sources */,
 				F0AD6EA729FD3BDD0022DFF8 /* bankClientiOSApp.swift in Sources */,
 				F00A03D82A112A3300091399 /* CardTypeImage.swift in Sources */,

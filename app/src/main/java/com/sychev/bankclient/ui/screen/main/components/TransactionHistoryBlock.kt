@@ -29,11 +29,11 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.sychev.bankclient.R
 import com.sychev.bankclient.ui.theme.GreyStrokeColor
-import com.sychev.bankclient.utils.CurrencySign
 import com.sychev.shared.domain.model.currency.Currency
 import com.sychev.shared.domain.model.currency.CurrencyItem
 import com.sychev.shared.domain.model.user_data.TransactionHistory
 import com.sychev.shared.utils.CurrencyChange
+import com.sychev.shared.utils.CurrencySign
 import com.sychev.shared.utils.toMoneyString
 import kotlin.math.absoluteValue
 

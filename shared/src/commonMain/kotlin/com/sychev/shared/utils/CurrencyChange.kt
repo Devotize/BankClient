@@ -10,4 +10,7 @@ object CurrencyChange {
         val changeResult = usdAmount * usdChangeRate / targetChangeRate
         return changeResult.roundTo(2).toMoneyString().replace(".", ",")
     }
+
+    fun toMoneyString(data: Double): String = data.toMoneyString()
+
 }
