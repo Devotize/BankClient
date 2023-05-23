@@ -23,9 +23,15 @@ struct UserInfoCard : View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            RoundedRectangle(cornerRadius: 25, style: .continuous)
-                .fill(Color.primary)
+            NavigationLink(destination:UserSelectionScreen()
+                .navigationTitle("My cards")
+                .navigationBarTitleDisplayMode(.inline)
+            ) {
+                RoundedRectangle(cornerRadius: 25, style: .continuous)
+                    .fill(Color.primary)
                 .shadow(radius: 10)
+                
+            }
             VStack {
                 HStack {
                     Image(CardTypeImage.getImageByName(name: user.type))
