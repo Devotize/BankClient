@@ -14,7 +14,11 @@ struct bankClientiOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainScreen()
+            NavigationStack {
+                MainScreen()
+                    .navigationTitle("Home")
+                    .navigationBarTitleDisplayMode(.large)
+            }
         }
     }
 }

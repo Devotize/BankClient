@@ -10,7 +10,7 @@ import shared
 
 struct MainScreen: View {
     
-   @ObservedObject private var viewModel = MainViewModel()
+    @ObservedObject private var viewModel = MainViewModel.getInstance()
     
     
     var body: some View {
@@ -57,6 +57,11 @@ struct MainScreen: View {
                         }
                     )
                 }.padding(EdgeInsets(top: 4, leading: 12, bottom: 12, trailing: 12))
+                TransactionHistoryBlock(
+                    transactionHistory: selectedUser!.transactionHistory,
+                    selectedCurrency: selectedCurrency!,
+                    currency: currency!
+                )
             }
             
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
