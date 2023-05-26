@@ -17,7 +17,7 @@
 		F0AD6EAB29FD3BDF0022DFF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0AD6EAA29FD3BDF0022DFF8 /* Assets.xcassets */; };
 		F0AD6EAE29FD3BDF0022DFF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0AD6EAD29FD3BDF0022DFF8 /* Preview Assets.xcassets */; };
 		F0B2EA5A2A1BF7D20064959C /* UserSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2EA592A1BF7D20064959C /* UserSelectionScreen.swift */; };
-		F0B2EA5D2A1BF7F10064959C /* UserSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B2EA5C2A1BF7F10064959C /* UserSelectionViewModel.swift */; };
+		F0C172582A1FE2BE00DA5D7B /* UserSelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C172572A1FE2BE00DA5D7B /* UserSelectionCard.swift */; };
 		F0FBCEB62A1A3E850037A847 /* CurrencySignCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FBCEB52A1A3E850037A847 /* CurrencySignCard.swift */; };
 		F0FBCEB82A1A552F0037A847 /* UserInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FBCEB72A1A552F0037A847 /* UserInfoCard.swift */; };
 		F0FBCEBA2A1A85C70037A847 /* TransactionHistoryBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FBCEB92A1A85C70037A847 /* TransactionHistoryBlock.swift */; };
@@ -35,7 +35,7 @@
 		F0AD6EAA29FD3BDF0022DFF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0AD6EAD29FD3BDF0022DFF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F0B2EA592A1BF7D20064959C /* UserSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionScreen.swift; sourceTree = "<group>"; };
-		F0B2EA5C2A1BF7F10064959C /* UserSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionViewModel.swift; sourceTree = "<group>"; };
+		F0C172572A1FE2BE00DA5D7B /* UserSelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionCard.swift; sourceTree = "<group>"; };
 		F0FBCEB52A1A3E850037A847 /* CurrencySignCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySignCard.swift; sourceTree = "<group>"; };
 		F0FBCEB72A1A552F0037A847 /* UserInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCard.swift; sourceTree = "<group>"; };
 		F0FBCEB92A1A85C70037A847 /* TransactionHistoryBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryBlock.swift; sourceTree = "<group>"; };
@@ -84,6 +84,7 @@
 				F0FBCEB52A1A3E850037A847 /* CurrencySignCard.swift */,
 				F0FBCEB72A1A552F0037A847 /* UserInfoCard.swift */,
 				F0FBCEB92A1A85C70037A847 /* TransactionHistoryBlock.swift */,
+				F0C172572A1FE2BE00DA5D7B /* UserSelectionCard.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -156,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				F0B2EA592A1BF7D20064959C /* UserSelectionScreen.swift */,
-				F0B2EA5C2A1BF7F10064959C /* UserSelectionViewModel.swift */,
 			);
 			path = user_selection;
 			sourceTree = "<group>";
@@ -253,7 +253,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0B2EA5D2A1BF7F10064959C /* UserSelectionViewModel.swift in Sources */,
 				F09614612A0AB1000038214A /* RepositoriesProvider.swift in Sources */,
 				F0FBCEB62A1A3E850037A847 /* CurrencySignCard.swift in Sources */,
 				F0FBCEB82A1A552F0037A847 /* UserInfoCard.swift in Sources */,
@@ -261,6 +260,7 @@
 				F0AD6EA729FD3BDD0022DFF8 /* bankClientiOSApp.swift in Sources */,
 				F0B2EA5A2A1BF7D20064959C /* UserSelectionScreen.swift in Sources */,
 				F00A03D82A112A3300091399 /* CardTypeImage.swift in Sources */,
+				F0C172582A1FE2BE00DA5D7B /* UserSelectionCard.swift in Sources */,
 				F00A03D52A11221C00091399 /* Color.swift in Sources */,
 				F096145D2A0AAD330038214A /* MainViewModel.swift in Sources */,
 				F0FBCEBA2A1A85C70037A847 /* TransactionHistoryBlock.swift in Sources */,

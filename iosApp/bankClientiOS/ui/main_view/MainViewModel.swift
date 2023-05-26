@@ -58,4 +58,8 @@ class MainViewModel: ObservableObject {
         selectedCurrency = currency
     }
     
+    func changeSelectedUser(user: User) {
+        self.selectedUser = user
+    }
+    
 }
