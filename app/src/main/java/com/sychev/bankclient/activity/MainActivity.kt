@@ -1,4 +1,4 @@
-package com.sychev.bankclient.ui.main_activity
+package com.sychev.bankclient.activity
 
 import android.os.Bundle
 import android.util.Log

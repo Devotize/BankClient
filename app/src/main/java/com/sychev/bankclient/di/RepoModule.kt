@@ -2,6 +2,8 @@ package com.sychev.bankclient.di
 
 import com.sychev.shared.data.remote.mapper.CurrencyDtoMapper
 import com.sychev.shared.data.remote.mapper.UsersDtoMapper
+import com.sychev.shared.repository.AuthRepository
+import com.sychev.shared.repository.AuthRepositoryImpl
 import com.sychev.shared.repository.BankUsersRepository
 import com.sychev.shared.repository.BankUsersRepositoryImpl
 import com.sychev.shared.repository.CurrencyRepository
@@ -24,6 +26,7 @@ object RepoModule {
             usersDtoMapper = usersDtoMapper,
         )
     }
+
     @Singleton
     @Provides
     fun provideCurrencyRepository(
@@ -33,4 +36,8 @@ object RepoModule {
             currencyDtoMapper = currencyDtoMapper,
         )
     }
+
+    @Singleton
+    @Provides
+    fun providerAuthRepository(): AuthRepository = AuthRepositoryImpl()
 }

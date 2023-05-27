@@ -13,6 +13,7 @@ import com.sychev.shared.domain.model.currency.Currency
 import com.sychev.shared.domain.model.currency.CurrencyItem
 import com.sychev.shared.domain.model.user_data.User
 import com.sychev.shared.domain.model.user_data.Users
+import com.sychev.shared.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -24,6 +25,7 @@ class MainViewModel @Inject constructor(
     private val getCurrency: GetCurrency,
     private val insertUsersToCache: InsertUsersToCache,
     private val getUsersFromCache: GetUsersFromCache,
+    private val authRepository: AuthRepository,
 ): ViewModel() {
 
     val users = mutableStateOf<Users?>(null)
