@@ -26,7 +26,6 @@ object RepoModule {
             usersDtoMapper = usersDtoMapper,
         )
     }
-
     @Singleton
     @Provides
     fun provideCurrencyRepository(
