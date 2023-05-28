@@ -1,6 +1,6 @@
 package com.sychev.shared.backend.security
 
-expect class HMAC {
+expect class HMAC() {
 
     fun encode(
         message: String,

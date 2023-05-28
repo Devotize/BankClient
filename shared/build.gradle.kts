@@ -65,6 +65,6 @@ android {
     namespace = "com.sychev.shared"
     compileSdk = 33
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
     }
 }
