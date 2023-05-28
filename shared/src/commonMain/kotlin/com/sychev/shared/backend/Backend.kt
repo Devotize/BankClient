@@ -6,6 +6,7 @@ import com.sychev.shared.backend.models.base.RequestResult
 import com.sychev.shared.backend.models.base.ResultFail
 import com.sychev.shared.backend.models.base.ResultSuccess
 import com.sychev.shared.backend.models.errors.RequestError
+import com.sychev.shared.logger.logger
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -53,7 +54,7 @@ internal class Backend private constructor() {
 
     private suspend inline fun <reified T> saveData(fileName: String, data: T) {
         val stringData = Json.encodeToString(data)
-        println("encodeToStr: ${stringData}")
+        logger.log(TAG, "saving data to local storage, fileName: $fileName, data: $stringData")
         storageManager.writeToFile(fileName, stringData)
     }
 
@@ -65,6 +66,7 @@ internal class Backend private constructor() {
         private val _instance by lazy { Backend() }
         fun getInstance() = _instance
         private const val auth_creds_filename = "auth_creds.txt"
+        private const val TAG = "APP_LOCAL_BACKEND"
     }
 
 }

@@ -32,12 +32,9 @@ class BackendStorageManagerImpl private constructor() : BackendStorageManagerApi
             mutex.withLock {
                 var data = ""
                 file.forEachLine {
-                    println("xertz: eachLine: $it")
                     data += it
                 }
-                data.also {
-                    println("xertz: rawData: $it")
-                }
+                data
             }
         }
     }
