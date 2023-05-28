@@ -6,6 +6,7 @@ import com.sychev.shared.backend.models.base.RequestResult
 import com.sychev.shared.backend.models.base.ResultFail
 import com.sychev.shared.backend.models.base.ResultSuccess
 import com.sychev.shared.backend.models.errors.RequestError
+import com.sychev.shared.backend.service.AuthService
 import com.sychev.shared.logger.logger
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -14,6 +15,7 @@ import kotlinx.serialization.json.Json
 internal class Backend private constructor() {
 
     private val storageManager: BackendStorageManagerApi = provideBackendStorageManager()
+    private val authService by lazy { AuthService.getInstance() }
 
     suspend fun registerUser(
         email: String,
@@ -32,7 +34,23 @@ internal class Backend private constructor() {
             mutableData
         )
         saveData(auth_creds_filename, newDataModel)
-        return ResultSuccess("${getAuthCredentials()}")
+        return ResultSuccess(authService.generateJWT(email).toString())
+    }
+
+    suspend fun loginUser(
+        email: String,
+        password: String,
+    ): RequestResult<String> {
+        if (email.isEmpty() || password.isEmpty()) {
+            return ResultFail(RequestError.BadCredentials)
+        }
+        val allCredsData = getAuthCredentials()
+        val userCreds = allCredsData.properties.find { it.userEmail == email }
+            ?: return ResultFail(RequestError.UserNotExists)
+        if (userCreds.userPass != password) {
+            return ResultFail(RequestError.WrongPassword)
+        }
+        return ResultSuccess(authService.generateJWT(email).toString())
     }
 
     private suspend fun getAuthCredentials(): AuthDataModel {
