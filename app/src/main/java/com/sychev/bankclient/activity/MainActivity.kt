@@ -27,6 +27,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.sychev.bankclient.data.local.data_store.StoreUserCardNumber
 import com.sychev.bankclient.ui.navigation.Screen
+import com.sychev.bankclient.ui.screen.auth.RegistrationScreen
+import com.sychev.bankclient.ui.screen.auth.RegistrationViewModel
 import com.sychev.bankclient.ui.screen.main.MainScreen
 import com.sychev.bankclient.ui.screen.main.MainViewModel
 import com.sychev.bankclient.ui.screen.main.cards.CardsScreen
@@ -43,6 +45,7 @@ import kotlinx.coroutines.withContext
 class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
+
     private lateinit var connectionLiveData: ConnectionLiveData
     private lateinit var storeUserCardNumber: StoreUserCardNumber
 
@@ -51,12 +54,12 @@ class MainActivity : ComponentActivity() {
         connectionLiveData = ConnectionLiveData(this)
         storeUserCardNumber = StoreUserCardNumber(this)
         lifecycleScope.launch {
-                storeUserCardNumber.getUserCardNumber.collect { str ->
-                    str?.let {
-                        viewModel.setPreviouslySelectedUserCardNumber(it)
-                    }
-                    this.cancel()
+            storeUserCardNumber.getUserCardNumber.collect { str ->
+                str?.let {
+                    viewModel.setPreviouslySelectedUserCardNumber(it)
                 }
+                this.cancel()
+            }
         }
         setContent {
             BankClientTheme {
@@ -96,7 +99,7 @@ class MainActivity : ComponentActivity() {
                         }
                         NavHost(
                             navController = navController,
-                            startDestination = Screen.MainScreen.route
+                            startDestination = Screen.RegistrationScreen.route
                         ) {
                             composable(route = Screen.MainScreen.route) {
                                 MainScreen(
@@ -114,6 +117,14 @@ class MainActivity : ComponentActivity() {
                                     }
                                 )
                             }
+                            composable(route = Screen.RegistrationScreen.route) {
+                                val registrationViewModel: RegistrationViewModel by viewModels()
+                                RegistrationScreen(
+                                    viewModel = registrationViewModel,
+                                    onAuthSuccess = {},
+                                    goToLogin = {},
+                                )
+                            }
                         }
                     }
                 }
@@ -123,7 +134,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onStop() {
         super.onStop()
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             withContext(IO) {
                 viewModel.currentUser.value?.let { user ->
                     storeUserCardNumber.saveUserCardNumber(user.cardNumber)

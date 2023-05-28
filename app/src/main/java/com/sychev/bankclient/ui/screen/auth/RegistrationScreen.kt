@@ -1,0 +1,117 @@
+package com.sychev.bankclient.ui.screen.auth
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.material.TextFieldDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.TextUnitType
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun RegistrationScreen(
+    viewModel: RegistrationViewModel,
+    goToLogin: () -> Unit,
+    onAuthSuccess: () -> Unit,
+) {
+
+    val email = remember { mutableStateOf("") }
+    val password = remember { mutableStateOf("") }
+
+    val isRegisterButtonEnabled = remember {
+        mutableStateOf(false)
+    }.also {
+        it.value = email.value.isNotEmpty() && password.value.isNotEmpty()
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colors.primary),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+
+        Spacer(modifier = Modifier.height(84.dp))
+        Text(text = "Register new account", color = MaterialTheme.colors.secondary)
+        Spacer(modifier = Modifier.height(32.dp))
+
+
+        OutlinedTextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp),
+            value = email.value,
+            onValueChange = {
+                email.value = it
+            },
+            label = { Text(text = "Email") },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = MaterialTheme.colors.onPrimary,
+                focusedBorderColor = MaterialTheme.colors.secondary,
+                unfocusedBorderColor = MaterialTheme.colors.onSurface,
+                focusedLabelColor = MaterialTheme.colors.secondary,
+                unfocusedLabelColor = MaterialTheme.colors.onSurface,
+                cursorColor = MaterialTheme.colors.secondary,
+            ),
+            textStyle = TextStyle(fontSize = TextUnit(16f, TextUnitType.Sp))
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        OutlinedTextField(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp),
+            value = password.value,
+            onValueChange = {
+                password.value = it
+            },
+            label = { Text(text = "Password") },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = MaterialTheme.colors.onPrimary,
+                focusedBorderColor = MaterialTheme.colors.secondary,
+                unfocusedBorderColor = MaterialTheme.colors.onSurface,
+                focusedLabelColor = MaterialTheme.colors.secondary,
+                unfocusedLabelColor = MaterialTheme.colors.onSurface,
+                cursorColor = MaterialTheme.colors.secondary,
+            ),
+            textStyle = TextStyle(fontSize = TextUnit(16f, TextUnitType.Sp))
+        )
+
+        Spacer(modifier = Modifier.height(84.dp))
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            onClick = { /*TODO*/ },
+            enabled = isRegisterButtonEnabled.value,
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = MaterialTheme.colors.secondary,
+                contentColor = MaterialTheme.colors.onSecondary,
+                disabledBackgroundColor = MaterialTheme.colors.secondary.copy(alpha = 0.8f),
+                disabledContentColor = MaterialTheme.colors.onSecondary.copy(alpha = 0.8f),
+            )
+        ) {
+            Text(
+                modifier = Modifier.padding(4.dp),
+                text = "Create new account",
+                fontSize = TextUnit(20f, TextUnitType.Sp),
+            )
+        }
+    }
+
+}
