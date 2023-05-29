@@ -8,19 +8,28 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
@@ -34,6 +43,7 @@ fun RegistrationScreen(
 
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
+    val passwordVisible = remember { mutableStateOf(false) }
 
     val isRegisterButtonEnabled = remember {
         mutableStateOf(false)
@@ -70,7 +80,8 @@ fun RegistrationScreen(
                 unfocusedLabelColor = MaterialTheme.colors.onSurface,
                 cursorColor = MaterialTheme.colors.secondary,
             ),
-            textStyle = TextStyle(fontSize = TextUnit(16f, TextUnitType.Sp))
+            textStyle = TextStyle(fontSize = TextUnit(16f, TextUnitType.Sp)),
+            singleLine = true,
         )
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
@@ -90,7 +101,18 @@ fun RegistrationScreen(
                 unfocusedLabelColor = MaterialTheme.colors.onSurface,
                 cursorColor = MaterialTheme.colors.secondary,
             ),
-            textStyle = TextStyle(fontSize = TextUnit(16f, TextUnitType.Sp))
+            textStyle = TextStyle(fontSize = TextUnit(16f, TextUnitType.Sp)),
+            singleLine = true,
+            visualTransformation = if (passwordVisible.value) VisualTransformation.None else PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            trailingIcon = {
+                val image = if (passwordVisible.value)
+                    Icons.Filled.Visibility
+                else Icons.Filled.VisibilityOff
+                IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
+                    Icon(imageVector = image, null)
+                }
+            }
         )
 
         Spacer(modifier = Modifier.height(84.dp))
