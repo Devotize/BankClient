@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -121,21 +122,35 @@ class MainActivity : ComponentActivity() {
                             }
                             composable(route = Screen.RegistrationScreen.route) {
                                 val registrationViewModel: RegistrationViewModel by viewModels()
+                                val navOptions = NavOptions.Builder()
+                                    .setLaunchSingleTop(true)
+                                    .build()
                                 RegistrationScreen(
                                     viewModel = registrationViewModel,
                                     onAuthSuccess = {},
                                     goToLogin = {
-                                        navController.navigate(Screen.LoginScreen.route)
+                                        navController.popBackStack()
+                                        navController.navigate(
+                                            Screen.LoginScreen.route,
+                                            navOptions = navOptions,
+                                        )
                                     },
                                 )
                             }
                             composable(route = Screen.LoginScreen.route) {
                                 val loginViewModel: LoginViewModel by viewModels()
+                                val navOptions = NavOptions.Builder()
+                                    .setLaunchSingleTop(true)
+                                    .build()
                                 LoginScreen(
                                     viewModel = loginViewModel,
                                     onAuthSuccess = {},
                                     goToRegistration = {
-                                        navController.navigate(Screen.RegistrationScreen.route)
+                                        navController.popBackStack()
+                                        navController.navigate(
+                                            Screen.RegistrationScreen.route,
+                                            navOptions = navOptions,
+                                        )
                                     },
                                 )
                             }
