@@ -127,7 +127,10 @@ class MainActivity : ComponentActivity() {
                                     .build()
                                 RegistrationScreen(
                                     viewModel = registrationViewModel,
-                                    onAuthSuccess = {},
+                                    onAuthSuccess = {
+                                        navController.popBackStack()
+                                        navController.navigate(Screen.MainScreen.route)
+                                    },
                                     goToLogin = {
                                         navController.popBackStack()
                                         navController.navigate(
@@ -144,7 +147,10 @@ class MainActivity : ComponentActivity() {
                                     .build()
                                 LoginScreen(
                                     viewModel = loginViewModel,
-                                    onAuthSuccess = {},
+                                    onAuthSuccess = {
+                                        navController.popBackStack()
+                                        navController.navigate(Screen.MainScreen.route)
+                                    },
                                     goToRegistration = {
                                         navController.popBackStack()
                                         navController.navigate(
