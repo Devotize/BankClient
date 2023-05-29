@@ -33,6 +33,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import com.sychev.bankclient.utils.collectAsEffect
 
 @Composable
 fun RegistrationScreen(
@@ -44,6 +45,10 @@ fun RegistrationScreen(
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val passwordVisible = remember { mutableStateOf(false) }
+
+    viewModel.registerSuccessEventStream.collectAsEffect(block = {
+        onAuthSuccess.invoke()
+    })
 
     val isRegisterButtonEnabled = remember {
         mutableStateOf(false)
@@ -121,7 +126,12 @@ fun RegistrationScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            onClick = { /*TODO*/ },
+            onClick = {
+                viewModel.registerUser(
+                    email = email.value,
+                    password = password.value
+                )
+            },
             enabled = isRegisterButtonEnabled.value,
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = MaterialTheme.colors.secondary,
