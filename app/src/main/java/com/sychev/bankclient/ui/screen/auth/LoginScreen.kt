@@ -26,9 +26,9 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun RegistrationScreen(
-    viewModel: RegistrationViewModel,
-    goToLogin: () -> Unit,
+fun LoginScreen(
+    viewModel: LoginViewModel,
+    goToRegistration: () -> Unit,
     onAuthSuccess: () -> Unit,
 ) {
 
@@ -49,7 +49,7 @@ fun RegistrationScreen(
     ) {
 
         Spacer(modifier = Modifier.height(84.dp))
-        Text(text = "Register new account", color = MaterialTheme.colors.secondary)
+        Text(text = "Log into your account", color = MaterialTheme.colors.secondary)
         Spacer(modifier = Modifier.height(32.dp))
 
 
@@ -110,7 +110,7 @@ fun RegistrationScreen(
         ) {
             Text(
                 modifier = Modifier.padding(4.dp),
-                text = "Create new account",
+                text = "Log in",
                 fontSize = TextUnit(20f, TextUnitType.Sp),
             )
         }
@@ -120,18 +120,19 @@ fun RegistrationScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = "Already have an account?",
+                text = "Don't have an account yet?",
                 color = MaterialTheme.colors.onSurface,
                 fontSize = TextUnit(15f, TextUnitType.Sp),
             )
-            TextButton(onClick = goToLogin) {
+            TextButton(onClick = goToRegistration) {
                 Text(
-                    text = "Log in.",
+                    text = "Create new one!",
                     color = MaterialTheme.colors.secondary,
                     fontSize = TextUnit(15f, TextUnitType.Sp),
                 )
             }
         }
     }
+
 
 }

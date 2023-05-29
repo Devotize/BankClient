@@ -27,6 +27,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.sychev.bankclient.data.local.data_store.StoreUserCardNumber
 import com.sychev.bankclient.ui.navigation.Screen
+import com.sychev.bankclient.ui.screen.auth.LoginScreen
+import com.sychev.bankclient.ui.screen.auth.LoginViewModel
 import com.sychev.bankclient.ui.screen.auth.RegistrationScreen
 import com.sychev.bankclient.ui.screen.auth.RegistrationViewModel
 import com.sychev.bankclient.ui.screen.main.MainScreen
@@ -122,7 +124,19 @@ class MainActivity : ComponentActivity() {
                                 RegistrationScreen(
                                     viewModel = registrationViewModel,
                                     onAuthSuccess = {},
-                                    goToLogin = {},
+                                    goToLogin = {
+                                        navController.navigate(Screen.LoginScreen.route)
+                                    },
+                                )
+                            }
+                            composable(route = Screen.LoginScreen.route) {
+                                val loginViewModel: LoginViewModel by viewModels()
+                                LoginScreen(
+                                    viewModel = loginViewModel,
+                                    onAuthSuccess = {},
+                                    goToRegistration = {
+                                        navController.navigate(Screen.RegistrationScreen.route)
+                                    },
                                 )
                             }
                         }
