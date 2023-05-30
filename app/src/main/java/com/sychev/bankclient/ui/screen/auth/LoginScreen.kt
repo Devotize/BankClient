@@ -33,6 +33,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import com.sychev.bankclient.ui.screen.auth.components.AuthDialog
+import com.sychev.bankclient.utils.collectAsEffect
+import com.sychev.shared.backend.models.errors.RequestError
 
 @Composable
 fun LoginScreen(
@@ -44,12 +47,34 @@ fun LoginScreen(
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val passwordVisible = remember { mutableStateOf(false) }
+    val lastError = remember {
+        mutableStateOf<RequestError?>(null)
+    }
 
-    val isRegisterButtonEnabled = remember {
+    val showAlertDialog = remember {
+        mutableStateOf(false)
+    }
+
+    viewModel.loginSuccessEventStream.collectAsEffect(block = {
+        onAuthSuccess.invoke()
+    })
+
+    viewModel.errorStream.collectAsEffect(block = {
+        lastError.value = it
+        showAlertDialog.value = true
+    })
+
+    val isLoginButtonEnabled = remember {
         mutableStateOf(false)
     }.also {
         it.value = email.value.isNotEmpty() && password.value.isNotEmpty()
     }
+
+    AuthDialog(
+        title = "Login error",
+        message = lastError.value?.message.orEmpty(),
+        isVisible = showAlertDialog
+    )
 
     Column(
         modifier = Modifier
@@ -121,8 +146,10 @@ fun LoginScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            onClick = { /*TODO*/ },
-            enabled = isRegisterButtonEnabled.value,
+            onClick = {
+                viewModel.loginUser(email.value, password.value)
+            },
+            enabled = isLoginButtonEnabled.value,
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = MaterialTheme.colors.secondary,
                 contentColor = MaterialTheme.colors.onSecondary,

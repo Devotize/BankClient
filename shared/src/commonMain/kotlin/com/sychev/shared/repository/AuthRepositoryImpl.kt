@@ -27,7 +27,7 @@ class AuthRepositoryImpl : AuthRepository {
     }
 
     override suspend fun loginUser(loginRequest: LoginRequest): RequestResult<Token> {
-        val dataResult = backend.registerUser(
+        val dataResult = backend.loginUser(
             loginRequest.email,
             loginRequest.password
         )
