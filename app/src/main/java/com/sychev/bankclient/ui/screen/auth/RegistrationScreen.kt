@@ -93,7 +93,7 @@ fun RegistrationScreen(
                 .padding(start = 16.dp, end = 16.dp),
             value = email.value,
             onValueChange = {
-                email.value = it
+                email.value = it.trimEnd()
             },
             label = { Text(text = "Email") },
             colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -114,7 +114,7 @@ fun RegistrationScreen(
                 .padding(start = 16.dp, end = 16.dp),
             value = password.value,
             onValueChange = {
-                password.value = it
+                password.value = it.trimEnd()
             },
             label = { Text(text = "Password") },
             colors = TextFieldDefaults.outlinedTextFieldColors(

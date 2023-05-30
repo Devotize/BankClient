@@ -94,7 +94,7 @@ fun LoginScreen(
                 .padding(start = 16.dp, end = 16.dp),
             value = email.value,
             onValueChange = {
-                email.value = it
+                email.value = it.trimEnd()
             },
             label = { Text(text = "Email") },
             colors = TextFieldDefaults.outlinedTextFieldColors(
@@ -107,6 +107,7 @@ fun LoginScreen(
             ),
             textStyle = TextStyle(fontSize = TextUnit(16f, TextUnitType.Sp)),
             singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         )
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(
@@ -115,7 +116,7 @@ fun LoginScreen(
                 .padding(start = 16.dp, end = 16.dp),
             value = password.value,
             onValueChange = {
-                password.value = it
+                password.value = it.trimEnd()
             },
             label = { Text(text = "Password") },
             colors = TextFieldDefaults.outlinedTextFieldColors(
