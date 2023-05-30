@@ -1,9 +1,10 @@
 package com.sychev.bankclient.ui.screen.auth
 
 import androidx.lifecycle.ViewModel
+import com.sychev.shared.backend.models.base.ResultFail
 import com.sychev.shared.backend.models.base.ResultSuccess
+import com.sychev.shared.backend.models.errors.RequestError
 import com.sychev.shared.domain.model.auth.RegistrationRequest
-import com.sychev.shared.logger.logger
 import com.sychev.shared.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -21,6 +22,9 @@ class RegistrationViewModel @Inject constructor(
     private val _registerSuccessEventStream = MutableSharedFlow<Unit>()
     val registerSuccessEventStream = _registerSuccessEventStream.asSharedFlow()
 
+    private val _errorStream = MutableSharedFlow<RequestError>()
+    val errorStream = _errorStream.asSharedFlow()
+
     fun registerUser(email: String, password: String) {
         CoroutineScope(Dispatchers.Default).launch {
             authRepository.registerUser(
@@ -28,10 +32,11 @@ class RegistrationViewModel @Inject constructor(
                     email, password
                 )
             ).also { result ->
-                if (result is ResultSuccess) {
+                (result as? ResultSuccess)?.let {
                     _registerSuccessEventStream.emit(Unit)
-                } else {
-                    logger.logXertz("registrationError: $result")
+                }
+                (result as? ResultFail)?.let {
+                    _errorStream.emit(it.error)
                 }
             }
         }

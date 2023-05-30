@@ -33,7 +33,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import com.sychev.bankclient.ui.screen.auth.components.AuthDialog
 import com.sychev.bankclient.utils.collectAsEffect
+import com.sychev.shared.backend.models.errors.RequestError
 
 @Composable
 fun RegistrationScreen(
@@ -45,9 +47,20 @@ fun RegistrationScreen(
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val passwordVisible = remember { mutableStateOf(false) }
+    val lastError = remember {
+        mutableStateOf<RequestError?>(null)
+    }
+    val showAlertDialog = remember {
+        mutableStateOf(false)
+    }
 
     viewModel.registerSuccessEventStream.collectAsEffect(block = {
         onAuthSuccess.invoke()
+    })
+
+    viewModel.errorStream.collectAsEffect(block = {
+        lastError.value = it
+        showAlertDialog.value = true
     })
 
     val isRegisterButtonEnabled = remember {
@@ -55,6 +68,12 @@ fun RegistrationScreen(
     }.also {
         it.value = email.value.isNotEmpty() && password.value.isNotEmpty()
     }
+
+    AuthDialog(
+        title = "Registration error",
+        message = lastError.value?.message.orEmpty(),
+        isVisible = showAlertDialog
+    )
 
     Column(
         modifier = Modifier
