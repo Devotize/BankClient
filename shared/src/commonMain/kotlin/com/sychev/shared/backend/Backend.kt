@@ -24,6 +24,9 @@ internal class Backend private constructor() {
         if (email.isEmpty() || password.isEmpty()) {
             return ResultFail(RequestError.BadCredentials)
         }
+        if (password.length < MIN_PASS_LENGTH) {
+            return ResultFail(RequestError.PassTooSmall)
+        }
         val allCredsData = getAuthCredentials()
         if (allCredsData.properties.find { it.userEmail == email } != null) {
             return ResultFail(RequestError.UserAlreadyExists)
@@ -82,6 +85,7 @@ internal class Backend private constructor() {
 
     companion object {
         private val _instance by lazy { Backend() }
+        private val MIN_PASS_LENGTH = 6
         fun getInstance() = _instance
         private const val auth_creds_filename = "auth_creds.txt"
         private const val TAG = "APP_LOCAL_BACKEND"
