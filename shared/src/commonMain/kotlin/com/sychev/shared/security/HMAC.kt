@@ -1,4 +1,4 @@
-package com.sychev.shared.backend.security
+package com.sychev.shared.security
 
 expect class HMAC() {
 

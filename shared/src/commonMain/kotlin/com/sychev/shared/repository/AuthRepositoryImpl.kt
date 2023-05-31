@@ -8,15 +8,19 @@ import com.sychev.shared.domain.model.auth.LoginRequest
 import com.sychev.shared.domain.model.auth.RegistrationRequest
 import com.sychev.shared.domain.model.auth.Token
 import com.sychev.shared.logger.logger
+import com.sychev.shared.security.MD5
 
 class AuthRepositoryImpl : AuthRepository {
 
     private val backend = Backend.getInstance()
+    private val md5 = MD5()
 
     override suspend fun registerUser(registrationRequest: RegistrationRequest): RequestResult<Token> {
+        val encryptedEmail = md5.encrypt(registrationRequest.email)
+        val encryptedPass = md5.encrypt(registrationRequest.password)
         val dataResult = backend.registerUser(
-            registrationRequest.email,
-            registrationRequest.password
+            encryptedEmail,
+            encryptedPass
         )
         logger.log(TAG, "registerUser request result: $dataResult")
         return if (dataResult is ResultFail) {
@@ -27,9 +31,11 @@ class AuthRepositoryImpl : AuthRepository {
     }
 
     override suspend fun loginUser(loginRequest: LoginRequest): RequestResult<Token> {
+        val encryptedEmail = md5.encrypt(loginRequest.email)
+        val encryptedPass = md5.encrypt(loginRequest.password)
         val dataResult = backend.loginUser(
-            loginRequest.email,
-            loginRequest.password
+            encryptedEmail,
+            encryptedPass
         )
         logger.log(TAG, "loginUser request result: $dataResult")
         return if (dataResult is ResultFail) {

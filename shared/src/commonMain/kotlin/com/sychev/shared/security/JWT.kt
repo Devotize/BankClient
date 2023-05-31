@@ -1,4 +1,4 @@
-package com.sychev.shared.backend.security
+package com.sychev.shared.security
 
 import com.sychev.shared.logger.logger
 import io.ktor.util.encodeBase64

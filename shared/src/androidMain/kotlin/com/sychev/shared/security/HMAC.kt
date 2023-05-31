@@ -1,4 +1,4 @@
-package com.sychev.shared.backend.security
+package com.sychev.shared.security
 
 import java.util.Formatter
 import javax.crypto.Mac

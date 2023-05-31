@@ -1,6 +1,6 @@
 package com.sychev.shared.backend.service
 
-import com.sychev.shared.backend.security.JWT
+import com.sychev.shared.security.JWT
 
 class AuthService private constructor() {
 
