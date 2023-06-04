@@ -22,7 +22,7 @@ class AuthRepositoryImpl : AuthRepository {
             encryptedEmail,
             encryptedPass
         )
-        logger.log(TAG, "registerUser request result: $dataResult")
+        logger.log(TAG, "registerUser request token: $dataResult")
         return if (dataResult is ResultFail) {
             dataResult
         } else {
