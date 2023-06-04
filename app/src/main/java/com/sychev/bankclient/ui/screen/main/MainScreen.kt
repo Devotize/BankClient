@@ -1,16 +1,40 @@
 package com.sychev.bankclient.ui.screen.main
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
-import com.sychev.bankclient.ui.screen.main.components.*
+import com.sychev.bankclient.ui.screen.main.components.BankCard
+import com.sychev.bankclient.ui.screen.main.components.CurrencyCard
+import com.sychev.bankclient.ui.screen.main.components.LoadingBankCard
+import com.sychev.bankclient.ui.screen.main.components.LoadingCurrencyCard
+import com.sychev.bankclient.ui.screen.main.components.LoadingTransactionHistoryBlock
+import com.sychev.bankclient.ui.screen.main.components.TopBarMain
+import com.sychev.bankclient.ui.screen.main.components.TransactionHistoryBlock
+import kotlin.math.roundToInt
 
 @Composable
 fun MainScreen(
@@ -23,7 +47,10 @@ fun MainScreen(
     val currency = viewModel.currency.value
     val loadingUsers = viewModel.loadingUsers.value
     val loadingCurrency = viewModel.loadingCurrency.value
-    val refreshState = rememberSwipeRefreshState(isRefreshing = (users == null && currency == null && loadingCurrency || loadingUsers))
+    val refreshState =
+        rememberSwipeRefreshState(isRefreshing = (users == null && currency == null && loadingCurrency || loadingUsers))
+    val bankCardOffsetX = remember { mutableStateOf(0f) }
+    val hideSensitiveInformation = remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -56,14 +83,27 @@ fun MainScreen(
                         Spacer(modifier = Modifier.height(24.dp))
                         BankCard(
                             modifier = Modifier
+                                .offset { IntOffset(bankCardOffsetX.value.roundToInt(), 0) }
                                 .fillMaxWidth()
-                                .padding(start = 16.dp, end = 16.dp),
+                                .padding(start = 16.dp, end = 16.dp)
+                                .draggable(
+                                    orientation = Orientation.Horizontal,
+                                    state = rememberDraggableState { delta ->
+                                        bankCardOffsetX.value += delta
+                                    },
+                                    onDragStopped = {
+                                        bankCardOffsetX.value = 0f
+                                        hideSensitiveInformation.value =
+                                            !hideSensitiveInformation.value
+                                    }
+                                ),
                             user = user,
                             onClick = {
                                 goToChooseCardFragment()
                             },
                             currency = currency,
                             selectedCurrency = selectedCurrency,
+                            hideSensitiveInformation = hideSensitiveInformation.value
                         )
                         Spacer(modifier = Modifier.height(40.dp))
                     }

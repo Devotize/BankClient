@@ -39,6 +39,7 @@ fun BankCard(
     onClick: () -> Unit,
     currency: Currency? = null,
     selectedCurrency: CurrencyItem? = null,
+    hideSensitiveInformation: Boolean = false,
 ) {
     Surface(
         modifier = modifier,
@@ -127,14 +128,18 @@ fun BankCard(
                 }
                 currency?.let { currency ->
                     selectedCurrency?.let { currencyItem ->
-                        Text(
-                            text = CurrencySign.getCurrencySign(currencyItem.charCode) +
+                        val balanceValueText = if (hideSensitiveInformation) {
+                            "******"
+                        } else {
+                            CurrencySign.getCurrencySign(currencyItem.charCode) +
                                     CurrencyChange.changeCurrencyAndRound(
                                         user.balance,
                                         currency.valute.uSD.value,
                                         currencyItem.value
                                     )
-
+                        }
+                        Text(
+                            text = balanceValueText
                         )
                     }
                 }
@@ -147,8 +152,13 @@ fun BankCard(
                         color = MaterialTheme.colors.onSurface
                     )
                     Spacer(modifier = Modifier.height(4.dp))
+                    val balanceValueText = if (hideSensitiveInformation) {
+                        "***"
+                    } else {
+                        "${CurrencySign.getCurrencySign("USD")}${user.balance.toMoneyString()}"
+                    }
                     Text(
-                        text = "${CurrencySign.getCurrencySign("USD")}${user.balance.toMoneyString()}",
+                        text = balanceValueText,
                         style = MaterialTheme.typography.h4,
                         color = MaterialTheme.colors.onPrimary
                     )
