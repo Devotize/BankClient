@@ -64,8 +64,13 @@ fun BankCard(
                     contentDescription = null,
                 )
                 Spacer(modifier = Modifier.width(18.dp))
+                val cardNumber = if (hideSensitiveInformation) {
+                    "**** **** **** ****"
+                } else {
+                    user.cardNumber
+                }
                 Text(
-                    text = user.cardNumber,
+                    text = cardNumber,
                     style = MaterialTheme.typography.h2,
                 )
 
