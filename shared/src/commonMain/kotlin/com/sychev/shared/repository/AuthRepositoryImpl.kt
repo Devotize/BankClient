@@ -18,6 +18,10 @@ class AuthRepositoryImpl : AuthRepository {
     override suspend fun registerUser(registrationRequest: RegistrationRequest): RequestResult<Token> {
         val encryptedEmail = md5.encrypt(registrationRequest.email)
         val encryptedPass = md5.encrypt(registrationRequest.password)
+        logger.log(
+            TAG,
+            "making register request with input data -> email: $encryptedEmail, password: $encryptedPass"
+        )
         val dataResult = backend.registerUser(
             encryptedEmail,
             encryptedPass
@@ -33,6 +37,10 @@ class AuthRepositoryImpl : AuthRepository {
     override suspend fun loginUser(loginRequest: LoginRequest): RequestResult<Token> {
         val encryptedEmail = md5.encrypt(loginRequest.email)
         val encryptedPass = md5.encrypt(loginRequest.password)
+        logger.log(
+            TAG,
+            "making login request with input data -> email: $encryptedEmail, password: $encryptedPass"
+        )
         val dataResult = backend.loginUser(
             encryptedEmail,
             encryptedPass
