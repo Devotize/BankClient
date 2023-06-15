@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.sychev.bankclient.ui.screen.auth.components.AuthDialog
 import com.sychev.bankclient.utils.collectAsEffect
-import com.sychev.shared.backend.models.errors.RequestError
+import com.sychev.shared.backend.models.errors.RequestErrorCodes
 
 @Composable
 fun RegistrationScreen(
@@ -48,7 +48,7 @@ fun RegistrationScreen(
     val password = remember { mutableStateOf("") }
     val passwordVisible = remember { mutableStateOf(false) }
     val lastError = remember {
-        mutableStateOf<RequestError?>(null)
+        mutableStateOf<RequestErrorCodes?>(null)
     }
     val showAlertDialog = remember {
         mutableStateOf(false)

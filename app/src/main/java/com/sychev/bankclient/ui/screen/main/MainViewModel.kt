@@ -8,15 +8,21 @@ import com.sychev.bankclient.use_case.FetchBankUsers
 import com.sychev.bankclient.use_case.GetCurrency
 import com.sychev.bankclient.use_case.GetUsersFromCache
 import com.sychev.bankclient.use_case.InsertUsersToCache
+import com.sychev.bankclient.utils.DataStoreProvider
 import com.sychev.bankclient.utils.TAG
+import com.sychev.bankclient.utils.getSavedToken
+import com.sychev.bankclient.utils.saveToken
 import com.sychev.shared.domain.model.currency.Currency
 import com.sychev.shared.domain.model.currency.CurrencyItem
 import com.sychev.shared.domain.model.user_data.User
 import com.sychev.shared.domain.model.user_data.Users
 import com.sychev.shared.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
@@ -106,6 +112,16 @@ class MainViewModel @Inject constructor(
 
     fun setPreviouslySelectedUserCardNumber(cardNumber: String) {
         previouslySelectedUserCardNumber.value = cardNumber
+    }
+
+    fun getUserJWT(): String = runBlocking {
+        DataStoreProvider.instance.getSavedToken().first()
+    }
+
+    fun clearUserJWT() {
+        viewModelScope.launch {
+            DataStoreProvider.instance.saveToken("")
+        }
     }
 
     fun refreshData() {

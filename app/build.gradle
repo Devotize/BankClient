@@ -66,6 +66,8 @@ dependencies {
     implementation "com.google.accompanist:accompanist-swiperefresh:0.21.4-beta"
     //live data with compose
     implementation 'androidx.compose.runtime:runtime-livedata:1.1.0-beta04'
+    //data store
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     //retrofit and okhttp
     def retrofit_version = "2.9.0"

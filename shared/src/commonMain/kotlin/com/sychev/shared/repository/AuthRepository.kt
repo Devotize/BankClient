@@ -11,4 +11,6 @@ interface AuthRepository {
 
     suspend fun loginUser(loginRequest: LoginRequest): RequestResult<Token>
 
+    suspend fun validateToken(token: String): RequestResult<Unit>
+
 }

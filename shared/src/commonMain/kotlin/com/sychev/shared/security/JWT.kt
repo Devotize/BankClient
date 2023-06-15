@@ -1,6 +1,5 @@
 package com.sychev.shared.security
 
-import com.sychev.shared.logger.logger
 import io.ktor.util.encodeBase64
 import io.ktor.utils.io.core.toByteArray
 
@@ -16,7 +15,6 @@ class JWT private constructor(
             private val defaultHeader = """{ "alg": "HS256", "typ": "JWT"}"""
 
             fun setClaims(claims: Map<String, String>): Builder {
-                logger.logXertz("claims: ${claims}")
                 this.claims = claims.toString()
                 return this
             }

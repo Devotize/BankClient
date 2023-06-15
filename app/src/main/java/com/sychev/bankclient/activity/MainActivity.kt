@@ -35,6 +35,8 @@ import com.sychev.bankclient.ui.screen.auth.RegistrationViewModel
 import com.sychev.bankclient.ui.screen.main.MainScreen
 import com.sychev.bankclient.ui.screen.main.MainViewModel
 import com.sychev.bankclient.ui.screen.main.cards.CardsScreen
+import com.sychev.bankclient.ui.screen.pin_code.PinCodeScreen
+import com.sychev.bankclient.ui.screen.pin_code.PinCodeViewModel
 import com.sychev.bankclient.ui.theme.BankClientTheme
 import com.sychev.bankclient.utils.ConnectionLiveData
 import com.sychev.bankclient.utils.TAG
@@ -102,7 +104,10 @@ class MainActivity : ComponentActivity() {
                         }
                         NavHost(
                             navController = navController,
-                            startDestination = Screen.RegistrationScreen.route
+                            startDestination = if (viewModel.getUserJWT().isEmpty())
+                                Screen.RegistrationScreen.route
+                            else
+                                Screen.PinCodeScreen.route
                         ) {
                             composable(route = Screen.MainScreen.route) {
                                 MainScreen(
@@ -120,6 +125,19 @@ class MainActivity : ComponentActivity() {
                                     }
                                 )
                             }
+                            composable(route = Screen.PinCodeScreen.route) {
+                                val pinCodeViewModel: PinCodeViewModel by viewModels()
+                                PinCodeScreen(
+                                    viewModel = pinCodeViewModel,
+                                    onVerificationSuccess = {
+                                        navController.navigate(Screen.MainScreen.route)
+                                    },
+                                    onVerificationFailure = {
+                                        navController.navigate(Screen.LoginScreen.route)
+                                        viewModel.clearUserJWT()
+                                    },
+                                )
+                            }
                             composable(route = Screen.RegistrationScreen.route) {
                                 val registrationViewModel: RegistrationViewModel by viewModels()
                                 val navOptions = NavOptions.Builder()
@@ -129,7 +147,7 @@ class MainActivity : ComponentActivity() {
                                     viewModel = registrationViewModel,
                                     onAuthSuccess = {
                                         navController.popBackStack()
-                                        navController.navigate(Screen.MainScreen.route)
+                                        navController.navigate(Screen.PinCodeScreen.route)
                                     },
                                     goToLogin = {
                                         navController.popBackStack()

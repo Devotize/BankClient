@@ -30,7 +30,11 @@ class AuthRepositoryImpl : AuthRepository {
         return if (dataResult is ResultFail) {
             dataResult
         } else {
-            ResultSuccess(Token(dataResult.getResult().data))
+            ResultSuccess(
+                Token(
+                    dataResult.getResult().data.first,
+                )
+            )
         }
     }
 
@@ -49,7 +53,16 @@ class AuthRepositoryImpl : AuthRepository {
         return if (dataResult is ResultFail) {
             dataResult
         } else {
-            ResultSuccess(Token(dataResult.getResult().data))
+            ResultSuccess(Token(dataResult.getResult().data.first))
+        }
+    }
+
+    override suspend fun validateToken(token: String): RequestResult<Unit> {
+        val result = backend.verifyJWT(token)
+        return if (result is ResultFail) {
+            result
+        } else {
+            ResultSuccess(Unit)
         }
     }
 
