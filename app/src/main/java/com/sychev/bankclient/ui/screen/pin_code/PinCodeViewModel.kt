@@ -70,7 +70,7 @@ class PinCodeViewModel @Inject constructor(
     private fun showErrorForSecond() {
         viewModelScope.launch {
             _showError.value = true
-            delay(100.seconds)
+            delay(1.seconds)
             _showError.value = false
         }
     }
